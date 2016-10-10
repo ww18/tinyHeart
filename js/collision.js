@@ -13,6 +13,8 @@ function bigFishFruitCollision(){
 					if(bigFish.bodyCount > 7){
 						bigFish.bodyCount = 7;
 					}
+					circle.born(fruits.x[i], fruits.y[i]);
+
 				}
 			}
 		}
@@ -27,6 +29,8 @@ function bigFishBabyCollision() {
 			babyFish.bodyCount = 0;
 			score.calculateScore();
 			bigFish.reset();
+
+			halo.born(babyFish.x, babyFish.y);
 		}
 	}
 }

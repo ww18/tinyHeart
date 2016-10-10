@@ -26,9 +26,12 @@ Fruit.prototype.draw = function(){
 		if(this.alive[i]){
 			if(this.l[i] <= 12){
 				this.l[i] += this.spd[i] * duringTime ;
+				this.x[i] = anes.headx[this.aneID[i] ];
+				this.y[i] = anes.heady[this.aneID[i] ];
 			}else{
 				this.y[i] -= this.spd[i] * 7 * duringTime;
 			}
+
 			//因为是全局变量，所以需要实时赋值
 			pic = this.orange;
 			if(this.fruitType[i] == 'blue'){
@@ -47,19 +50,20 @@ Fruit.prototype.born = function(i){
 	
 	var aneID = Math.floor(Math.random() * anes.num);
 	//if(!anes.hasFruit[aneID]){
-		this.x[i] = anes.x[aneID];
-		this.y[i] = canHeight - anes.len[aneID];
-		anes.hasFruit[aneID] = true;
-		this.l[i] = 0;
-		this.spd[i] = Math.random() * 0.01 + 0.005;
-		this.alive[i] = true;
-		this.aneID[i] = aneID; 
-		var ram = Math.random();
-		if(ram < 0.2){
-			this.fruitType[i] = 'blue';
-		}else{
-			this.fruitType[i] = 'orange';
-		}
+	while(anes.hasFruit[aneID]){
+		aneID = Math.floor(Math.random() * anes.num);
+	}
+	anes.hasFruit[aneID] = true;
+	this.l[i] = 0;
+	this.spd[i] = Math.random() * 0.01 + 0.005;
+	this.alive[i] = true;
+	this.aneID[i] = aneID;
+	var ram = Math.random();
+	if(ram < 0.2){
+		this.fruitType[i] = 'blue';
+	}else{
+		this.fruitType[i] = 'orange';
+	}
 	//}else{
 	//	this.born(i);
 	//}

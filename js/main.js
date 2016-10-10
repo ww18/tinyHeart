@@ -13,7 +13,9 @@ var backCan,
 	babyFish,
 	mx,
 	my,
-	score;
+	score,
+	circle,
+	halo;
 
 document.body.onload = startGame;
 
@@ -59,6 +61,12 @@ function initGame(){
 
 	score = new Score();
 
+	circle = new Circle();
+	circle.init();
+
+	halo = new Halo();
+	halo.init();
+
 	mx = canWidth * 0.5;
 	my = canHeight * 0.5;
 	
@@ -86,6 +94,9 @@ function loopGame(){
 
 	babyFish.draw();
 	score.draw();
+
+	circle.draw();
+	halo.draw();
 }
 
 function drawBackground(){
