@@ -6,7 +6,7 @@ function Fruit(){
 	this.y = [];
 	this.l = [];
 	this.spd = [];
-	this.aneID = [],
+	this.aneID = [];
 	this.fruitType = [];
 }
 Fruit.prototype.num = 30;
@@ -30,6 +30,7 @@ Fruit.prototype.draw = function(){
 				this.y[i] = anes.heady[this.aneID[i] ];
 			}else{
 				this.y[i] -= this.spd[i] * 7 * duringTime;
+				anes.hasFruit[this.aneID[i]] = false;
 			}
 
 			//因为是全局变量，所以需要实时赋值
@@ -40,7 +41,6 @@ Fruit.prototype.draw = function(){
 			backCtx.drawImage(pic, this.x[i]-this.l[i] * 0.5, this.y[i] - this.l[i] * 0.5, this.l[i], this.l[i]);
 			if(this.y[i] < 10){
 				this.alive[i] = false;
-				anes.hasFruit[this.aneID[i]] = false;
 			}
 		}
 		

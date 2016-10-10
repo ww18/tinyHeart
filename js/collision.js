@@ -4,7 +4,7 @@ function bigFishFruitCollision(){
 			if(fruits.alive[i]){
 				var l = calLength2(fruits.x[i], fruits.y[i], bigFish.x, bigFish.y);
 				if(l < 900){
-					fruits.dead(i);
+					fruits.alive[i] = false;
 					score.fruitNum++;
 					if(fruits.fruitType[i] == 'blue'){
 						score.double = 2;

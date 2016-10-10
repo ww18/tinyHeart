@@ -1,7 +1,7 @@
 /**
  * Created by oak-016 on 16/10/10.
  */
-function  Circle(){
+function Circle(){
     this.x = [];
     this.y = [];
     this.alive = [];
@@ -34,6 +34,7 @@ Circle.prototype.draw = function(){
             fishesCtx.stroke();
 
         }
+        console.log(i);
     }
     fishesCtx.restore();
 }
@@ -45,7 +46,7 @@ Circle.prototype.born = function(x, y){
             this.x[i] = x;
             this.y[i] = y;
             this.r[i] = 10;
-            return;
+            break;
         }
     }
     console.log(1);
