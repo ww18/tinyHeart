@@ -38,8 +38,8 @@ BabyFish.prototype.init = function(){
 }
 BabyFish.prototype.draw = function(){
 	//lerp x, y
-	this.x = lerpDistance(bigFish.x, this.x, 0.98);
-	this.y = lerpDistance(bigFish.y, this.y, 0.9);
+	this.x = lerpDistance(bigFish.x, this.x, 0.99);
+	this.y = lerpDistance(bigFish.y, this.y, 0.99);
 
 	var deltaX = bigFish.x - this.x;
 	var deltaY = bigFish.y - this.y;
@@ -77,6 +77,7 @@ BabyFish.prototype.draw = function(){
 		if(this.bodyCount > 19){
 			this.bodyCount = 19;
 			//game over
+			score.gameOver = true;
 		}
 		this.bodyTimer %= 300;
 	}

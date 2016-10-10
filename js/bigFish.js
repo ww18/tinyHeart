@@ -8,7 +8,8 @@ function BigFish(){
 	this.eyeCount = 0;
 	this.eyeInterval = 1000;
 
-	this.body = [];
+	this.bodyOrange = [];
+	this.bodyBlue = [];
 	this.bodyTimer = 0;
 	this.bodyCount = 0;
 
@@ -19,14 +20,17 @@ function BigFish(){
 BigFish.prototype.init = function(){
 	this.x = canWidth * 0.5;
 	this.y = canHeight * 0.5;
+	var i = 0;
 	for(i = 0; i < 2; i++){
 		this.eye[i] = new Image();
 		this.eye[i].src = 'src/bigEye' + i + '.png';
 	}
 
 	for(i = 0; i < 8; i++){
-		this.body[i] = new Image();
-		this.body[i].src = 'src/bigSwim' + i + '.png';
+		this.bodyOrange[i] = new Image();
+		this.bodyOrange[i].src = 'src/bigSwim' + i + '.png';
+		this.bodyBlue[i] = new Image();
+		this.bodyBlue[i].src = 'src/bigSwimBlue' + i + '.png';
 	}
 
 	for(i = 0; i < 8; i++){
@@ -68,18 +72,11 @@ BigFish.prototype.draw = function(){
 	var eyePic = this.eye[this.eyeCount];
 
 	//body animation
-	this.bodyTimer += duringTime;
-	
-	if(this.bodyTimer > 300){
-		this.bodyCount = this.bodyCount + 1;
-		if(this.bodyCount > 7){
-			this.bodyCount = 7;
-			//game over
-		}
-		this.bodyTimer %= 300;
+	if(score.double == 1){
+		var bodyPic = this.bodyOrange[this.bodyCount];
+	}else{
+		var bodyPic = this.bodyBlue[this.bodyCount];
 	}
-	var bodyPic = this.body[this.bodyCount];
-
 
 	fishesCtx.save();
 
@@ -90,4 +87,7 @@ BigFish.prototype.draw = function(){
 	fishesCtx.drawImage(eyePic, -eyePic.width * 0.5, -eyePic.height * 0.5);
 
 	fishesCtx.restore();
+}
+BigFish.prototype.reset = function(){
+	this.bodyCount = 0;
 }

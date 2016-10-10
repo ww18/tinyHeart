@@ -1,19 +1,19 @@
 var backCan, 
-		fishesCan,
-		backCtx, 
-		fishesCtx,
-		canWidth,
-		canHeight,
-		bgPic = new Image(),
-		duringTime,
-		lastTime,
-		anes,
-		fruits,
-		bigFish,
-		babyFish,
-		mx,
-		my,
-		score;
+	fishesCan,
+	backCtx,
+	fishesCtx,
+	canWidth,
+	canHeight,
+	bgPic = new Image(),
+	duringTime,
+	lastTime,
+	anes,
+	fruits,
+	bigFish,
+	babyFish,
+	mx,
+	my,
+	score;
 
 document.body.onload = startGame;
 
@@ -35,6 +35,10 @@ function initGame(){
 
 	backCtx = backCan.getContext('2d');
 	fishesCtx = fishesCan.getContext('2d');
+
+	fishesCtx.fillStyle = '#fff';
+	fishesCtx.font="30px Arial";
+	fishesCtx.textAlign = 'center';
 
 	canWidth = backCan.width;
 	canHeight = backCan.height;
@@ -81,7 +85,6 @@ function loopGame(){
 	bigFishBabyCollision();
 
 	babyFish.draw();
-
 	score.draw();
 }
 
@@ -90,9 +93,12 @@ function drawBackground(){
 }
 
 function onmousemove(e){
-	if(e.offSetX || e.layerX){
-		mx = e.offSetX == undefined ? e.layerX : e.offSetX;
-		my = e.offSetY == undefined ? e.layerY : e.offSetY;
+	if(!score.gameOver){
+		if(e.offSetX || e.layerX){
+			mx = e.offSetX == undefined ? e.layerX : e.offSetX;
+			my = e.offSetY == undefined ? e.layerY : e.offSetY;
+		}
 	}
+
 }
 
