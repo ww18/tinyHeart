@@ -14,9 +14,9 @@ function bigFishFruitCollision(){
 						bigFish.bodyCount = 7;
 					}
 					console.log('调用born方法之前i的值: ' + i);
-					console.log('fruit的所有坐标值, x:' + fruits.x + ' y:'+ fruits.y );
+					console.log('fruit的所有坐标值, x:' + fruits.x[i] + ' y:'+ fruits.y[i] );
 					circle.born(fruits.x[i], fruits.y[i], i);
-
+					break;
 				}
 			}
 		}

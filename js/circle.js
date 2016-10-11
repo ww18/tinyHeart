@@ -7,7 +7,7 @@ function Circle(){
     this.alive = [];
     this.r = [];
 }
-Circle.prototype.num = 10;
+Circle.prototype.num = 20;
 Circle.prototype.init = function () {
     for(var i = 0; i < this.num; i++){
         this.alive[i] = false;
