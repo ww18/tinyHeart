@@ -12,8 +12,13 @@ function Fruit(){
 Fruit.prototype.num = 30;
 Fruit.prototype.init = function(){
 	for(var i = 0; i < this.num; i++){
-		this.alive[i] = false;
-		this.born(i);
+		this.alive[i] =	false;
+		this.x[i] = 0;
+		this.y[i] = 0;
+		this.aneID[i] = 0;
+		this.spd[i] = Math.random() * 0.017 + 0.003; //[0.003, 0.02)
+		// this.born(i);
+		this.fruitType[i] = '';
 	}
 	this.orange.src = 'src/fruit.png';
 	this.blue.src = 'src/blue.png';
@@ -22,38 +27,39 @@ Fruit.prototype.draw = function(){
 	
 	//这里应该重复画了很多次，所以透明度都没有了
 	var pic;
-	for(var i = 0; i < this.num; i++){
-		if(this.alive[i]){
-			if(this.l[i] <= 12){
-				this.l[i] += this.spd[i] * duringTime ;
-				this.x[i] = anes.headx[this.aneID[i] ];
-				this.y[i] = anes.heady[this.aneID[i] ];
+	for(var a = 0; a < this.num; a++){
+		if(this.alive[a]){
+			if(this.l[a] <= 12){
+				this.l[a] += this.spd[a] * duringTime ;
+				this.x[a] = anes.headx[this.aneID[a]];
+				this.y[a] = anes.heady[this.aneID[a]];
 			}else{
-				this.y[i] -= this.spd[i] * 7 * duringTime;
-				anes.hasFruit[this.aneID[i]] = false;
+				this.y[a] -= this.spd[a] * 7 * duringTime;
+				 anes.hasFruit[this.aneID[a]] = false;
 			}
 
 			//因为是全局变量，所以需要实时赋值
 			pic = this.orange;
-			if(this.fruitType[i] == 'blue'){
+			if(this.fruitType[a] == 'blue'){
 				pic = this.blue;
 			}
-			backCtx.drawImage(pic, this.x[i]-this.l[i] * 0.5, this.y[i] - this.l[i] * 0.5, this.l[i], this.l[i]);
-			if(this.y[i] < 10){
-				this.alive[i] = false;
+			backCtx.drawImage(pic, this.x[a]-this.l[a] * 0.5, this.y[a] - this.l[a] * 0.5, this.l[a], this.l[a]);
+			if(this.y[a] < 10){
+				this.alive[a] = false;
 			}
 		}
 		
 	}
+
 }
 Fruit.prototype.born = function(i){
 	
 	var aneID = Math.floor(Math.random() * anes.num);
 	//if(!anes.hasFruit[aneID]){
-	while(anes.hasFruit[aneID]){
-		aneID = Math.floor(Math.random() * anes.num);
-	}
-	anes.hasFruit[aneID] = true;
+	 while(anes.hasFruit[aneID]){
+	 	aneID = Math.floor(Math.random() * anes.num);
+	 }
+	 anes.hasFruit[aneID] = true;
 	this.l[i] = 0;
 	this.spd[i] = Math.random() * 0.01 + 0.005;
 	this.alive[i] = true;
@@ -81,6 +87,7 @@ function monitorFruit(){
 		showFruit();
 		return;
 	}
+	console.log('fruits alive num: '+ num);
 }
 
 function showFruit(){

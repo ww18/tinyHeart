@@ -10,7 +10,7 @@ function Ane(){
 Ane.prototype.num = 50;
 Ane.prototype.init = function(){
 	for(var i = 0; i < this.num;i++){
-		this.rootx[i] = Math.ceil(i * 16 + Math.random() * 20);
+		this.rootx[i] = i * 16 + Math.random() * 20;
 		this.headx[i] = this.rootx[i];
 		this.heady[i] = canHeight - (200 + Math.random() * 50);
 		this.hasFruit[i] = false;
@@ -31,7 +31,7 @@ Ane.prototype.draw = function(){
 		//beginPath, moveTo, lineTo, stroke, strokeStyle, lineWidth, globalAlpha
 		backCtx.beginPath();
 		backCtx.moveTo(this.rootx[i], canHeight);
-		backCtx.quadraticCurveTo(this.rootx[i], canHeight - 100, this.rootx[i] + l * this.amp[i], this.heady[i]);
+		backCtx.quadraticCurveTo(this.rootx[i], canHeight - 100, this.headx[i], this.heady[i]);
 		
 		// backCtx.closePath();
 		backCtx.stroke();

@@ -24,6 +24,7 @@ function startGame(){
 	initGame();
 
 	lastTime = new Date();
+	duringTime = 0;
 	loopGame();
 	
 }

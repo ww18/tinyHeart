@@ -34,12 +34,11 @@ Circle.prototype.draw = function(){
             fishesCtx.stroke();
 
         }
-        console.log(i);
     }
     fishesCtx.restore();
 }
 
-Circle.prototype.born = function(x, y){
+Circle.prototype.born = function(x, y, a){
     for(var i = 0; i < this.num; i++){
         if(!this.alive[i]){
             this.alive[i] = true;
@@ -49,5 +48,4 @@ Circle.prototype.born = function(x, y){
             break;
         }
     }
-    console.log(1);
 }
