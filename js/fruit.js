@@ -29,7 +29,7 @@ Fruit.prototype.draw = function(){
 	var pic;
 	for(var a = 0; a < this.num; a++){
 		if(this.alive[a]){
-			if(this.l[a] <= 12){
+			if(this.l[a] <= 14){
 				this.l[a] += this.spd[a] * duringTime ;
 				this.x[a] = anes.headx[this.aneID[a]];
 				this.y[a] = anes.heady[this.aneID[a]];
@@ -61,7 +61,6 @@ Fruit.prototype.born = function(i){
 	 }
 	 anes.hasFruit[aneID] = true;
 	this.l[i] = 0;
-	this.spd[i] = Math.random() * 0.01 + 0.005;
 	this.alive[i] = true;
 	this.aneID[i] = aneID;
 	var ram = Math.random();

@@ -74,7 +74,7 @@ function initGame(){
 }
 
 function loopGame(){
-	window.requestAnimFrame(loopGame);
+	requestAnimationFrame(loopGame);
 	backCtx.clearRect(0,0,canWidth,canHeight);
 	fishesCtx.clearRect(0,0,canWidth,canHeight);
 
@@ -90,14 +90,18 @@ function loopGame(){
 	monitorFruit();
 
 	bigFish.draw();
+
+	babyFish.draw();
+
 	bigFishFruitCollision();
 	bigFishBabyCollision();
 
-	babyFish.draw();
 	score.draw();
 
 	circle.draw();
 	halo.draw();
+
+
 }
 
 function drawBackground(){
