@@ -55,7 +55,7 @@ Fruit.prototype.draw = function(){
 Fruit.prototype.born = function(i){
 	
 	var aneID = Math.floor(Math.random() * anes.num);
-	//if(!anes.hasFruit[aneID]){
+
 	 while(anes.hasFruit[aneID]){
 	 	aneID = Math.floor(Math.random() * anes.num);
 	 }
@@ -69,9 +69,6 @@ Fruit.prototype.born = function(i){
 	}else{
 		this.fruitType[i] = 'orange';
 	}
-	//}else{
-	//	this.born(i);
-	//}
 }
 Fruit.prototype.dead = function(i){
 	this.alive[i] = false;
@@ -90,12 +87,11 @@ function monitorFruit(){
 }
 
 function showFruit(){
-	for(var i = 0; i < fruits.num; i++){
-		if(!fruits.alive[i]){
-			fruits.born(i);
-			return;
-		}
+	var i = Math.floor(Math.random() * 30);
+	while(fruits.alive[i]){
+		i = Math.floor(Math.random() * 30);
 	}
+	fruits.born(i);
 }
 
 

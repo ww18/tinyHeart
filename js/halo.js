@@ -23,7 +23,7 @@ Halo.prototype.draw = function(){
             this.r[i] += duringTime * 0.06;
             if(this.r[i] > 100){
                 this.alive[i] = false;
-                break;
+                continue;
             }
             var alpha = 1 - this.r[i] / 100;
 

@@ -17,6 +17,7 @@ function bigFishFruitCollision(){
 					console.log('fruit的所有坐标值, x:' + fruits.x[i] + ' y:'+ fruits.y[i] );
 					console.log('l: ' + l);
 					circle.born(fruits.x[i], fruits.y[i], i);
+					continue;
 				}
 			}
 		}

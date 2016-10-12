@@ -23,7 +23,7 @@ Circle.prototype.draw = function(){
             this.r[i] += duringTime * 0.02;
             if(this.r[i] > 40){
                 this.alive[i] = false;
-                break;
+                continue;
             }
             var alpha = 1 - this.r[i] / 40;
 
