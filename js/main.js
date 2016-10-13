@@ -15,7 +15,8 @@ var backCan,
 	my,
 	score,
 	circle,
-	halo;
+	halo,
+	dust;
 
 document.body.onload = startGame;
 
@@ -68,6 +69,9 @@ function initGame(){
 	halo = new Halo();
 	halo.init();
 
+	dust = new Dust();
+	dust.init();
+
 	mx = canWidth * 0.5;
 	my = canHeight * 0.5;
 	
@@ -100,7 +104,7 @@ function loopGame(){
 
 	circle.draw();
 	halo.draw();
-
+	dust.draw();
 
 }
 
